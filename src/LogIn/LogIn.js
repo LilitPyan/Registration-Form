@@ -70,13 +70,14 @@ class LogIn extends Component {
                 {t("Log In")}
               </button>
               <p> {t("Are you here for the firts time")}?</p>
-              <Link to='signup'>
+              <Link to='/'>
                 <button>
                   {t("Sign Up")}
                 </button>
               </Link>
+             
             </div>
-          </form>
+          </form> 
         </div>
       );
     }

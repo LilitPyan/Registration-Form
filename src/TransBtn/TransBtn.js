@@ -6,7 +6,7 @@ import { withTranslation } from 'react-i18next'
 class TransBtn extends Component {
   state = {
     selectedLanguage: 'en',
-  }
+  };
 
   changeLanguage = (lng) => {
       i18n.changeLanguage(lng)

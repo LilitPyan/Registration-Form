@@ -1,0 +1,15 @@
+.box {
+	height:750px;
+	width: 1500px;
+	margin: 35px auto;
+	padding-top: 50px;
+	font-family: Verdana;
+}
+p {
+	font-size: 35px;
+}
+.box button {
+	width: 290px;
+	background-color: green;
+	color: 	#FFFFFF;
+}

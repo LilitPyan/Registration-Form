@@ -63,7 +63,7 @@ class SignUp extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleChange({ target: { name, value }}){
+    handleChange({ target: { name, value }}) {
         this.setState({ 
             user: {
              ...this.state.user, 
@@ -72,7 +72,7 @@ class SignUp extends Component {
         });
     }
 
-    handleSubmit(e){
+    handleSubmit(e) {
         e.preventDefault();
 
         const { email, password, confirmPassword, userName } = this.state.user;
@@ -90,19 +90,16 @@ class SignUp extends Component {
 
         this.setState({ errors });
 
-        if (email && password && confirmPassword && userName && isEmailValid && isPasswordValid) {
-            this.props.signUp({
-                email,
-                password,
-                userName,
-            });
+        const { user } = this.state;
+        if (user.email && user.password && user.confirmPassword && user.userName && isEmailValid && isPasswordValid) {
+            this.props.signUp(this.state.user); 
         }
 
     } 
 
     render() {
         const { user, errors } = this.state;
-        const { t } = this.props;
+        const { t, signUp } = this.props;
             
         return (
           <div className = {style.box}>
@@ -142,7 +139,7 @@ class SignUp extends Component {
                         {t("Sign Up")}
                     </button> 
                        <p>{t("Already registered")}?</p> 
-                    <Link to = "/">
+                    <Link to = "/login">
                     <button>
                         {t("Log In")}
                         </button>
@@ -158,10 +155,10 @@ const mapDispatchToProps = dispatch => {
     return {
         signUp: user => dispatch(signUp(user))
     };
-};
+}
 
 const mapStateToProps = state => ({
   userData: state.userData
-});
+})
 
-export default connect( mapStateToProps, mapDispatchToProps)(withTranslation('translations')(SignUp));
+export default connect(mapStateToProps, mapDispatchToProps)(withTranslation('translations')(SignUp));

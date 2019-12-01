@@ -1,9 +1,10 @@
- import { SIGN_UP, LOG_IN } from '../_actions/user.actions.js';
+ import { SIGN_UP, LOG_IN, LOG_OUT } from '../_actions/user.actions.js';
 
 const initialState = {
 	users: [],
 	loggedInUser: null,
 	isLoggedIn: false,
+	isLoggedOut: true,
 	errorMessage: '',
 };
 
@@ -23,10 +24,17 @@ function userReducer(state = initialState, action) {
 					...state,
 					errorMessage: '',
 					isLoggedIn: true,
+					isLoggedOut: false,
 					loggedInUser: user,
 				}
 			}
 
+		case LOG_OUT:
+				return {
+					isLoggedOut: true,
+					isLoggedIn: false,
+				}
+		
 			return {
 				...state,
 				errorMessage: 'User with this credentials does not exist'
